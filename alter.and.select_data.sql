@@ -1,16 +1,4 @@
-/*
-insert into usr1 (first_name, middle_name, last_name, email) values
-('Виталина','Матвеевна','Яблокова','apple@gmail.com'),
-('Елизавета','Митрофановна','Свечкина','svecha@gmail.com'),
-('Февзи','Мидатович','Муждабаев','mujdaba@gmail.com'),
-('Эдип','Эмирович','Языджы','shiir@gmail.com'),
-('Вадим','Владимирович','Титул','title@gmail.com'),
-('Яков','Игоревич','Снимок','photo@gmail.com'),
-('Усние','Халидовна','Халилова','halil@gmail.com'),
-('Роза','Люксенбург','Александрова','lyosha@gmail.com'),
-('Лжедмитрий','Иосипович','Второй','two@gmail.com'),
-('Ариана','Стилл','Гранде','ari@gmail.com');
-*/
+
 -- alter table usr1 rename column email to e_mail;
 -- alter table usr1 add constraint e_mail_unique unique(e_mail);
 -- alter table usr1 add column birth_date timestamp;
@@ -48,3 +36,8 @@ select first_name, last_name from usr1 where length(last_name)>7;
 select * from usr1 where birth_date > '2005-01-01';;
 select first_name, last_name, birth_date from usr1 order by birth_date desc ;
 select * from usr1 where birth_date > '2003-01-01' and birth_date < '2008-01-01' ;
+
+
+alter table role_permission add constraint FK_ROLE_PERMISSION_PERMISSION_ID foreign key (permission_id) references permission;
+alter table role_permission add constraint FK_ROLE_PERMISSION_ROLE foreign key (role_name) references role;
+alter table usr1 add constraint FK_USR1_ROLE foreign key (role_name)references role;
