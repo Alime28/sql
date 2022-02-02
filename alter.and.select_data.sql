@@ -41,3 +41,14 @@ select * from usr1 where birth_date > '2003-01-01' and birth_date < '2008-01-01'
 alter table role_permission add constraint FK_ROLE_PERMISSION_PERMISSION_ID foreign key (permission_id) references permission;
 alter table role_permission add constraint FK_ROLE_PERMISSION_ROLE foreign key (role_name) references role;
 alter table usr1 add constraint FK_USR1_ROLE foreign key (role_name)references role;
+
+
+select first_name, middle_name, last_name from usr1 where role_name='administrator';
+from usr1 where role_name in (select role_name from role_permission where permission_id in (select id from permission where name='view'))
+select first_name, middle_name, last_name from usr1 where role_name in (select role_name from role_permission where permission_id in (select id from permission_id in (select id from permission where name='view' or name = 'edit'));
+ 
+alter table group_member add constraint FK_group_member_group foreign key (group_id) references groups;
+alter table group_member add constraint FK_group_member_university_member foreign key (university_member_id) references university_member;
+alter table university_member add constraint FK_group_member_group foreign key (university_member_id) references department;
+alter table university_member add constraint FK_university_member_position foreign key (position_id) references position;
+alter table university_member add constraint FK_university_member_usr1 foreign key (id) references usr1;
