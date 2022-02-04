@@ -52,3 +52,12 @@ alter table group_member add constraint FK_group_member_university_member foreig
 alter table university_member add constraint FK_group_member_group foreign key (university_member_id) references department;
 alter table university_member add constraint FK_university_member_position foreign key (position_id) references position;
 alter table university_member add constraint FK_university_member_usr1 foreign key (id) references usr1;
+
+
+select u.first_name, u.middle_name, u.last_name, a.zip_code, a.city, a.street, a.building, a.flat from usr1 u inner join address a on u.id=a.user_id
+/*select u.first_name, u.middle_name, u.last_name, a.zip_code, a.city, a.street, a.building, a.flat from usr1 u inner join address a on u.id=a.user_id;
+select u.first_name, u.middle_name, u.last_name, a.zip_code, a.city, a.street, a.building, a.flat from usr1 u left join address a on u.id=a.user_id;
+select m.first_name, m.middle_name, m.last_name, m.e_mail, p.name from university_member um join usr1 m on um.user_id=m.id join position p on um.position_id=p.id;
+select m.first_name, m.middle_name, m.last_name, m.e_mail, g.name from group_member gm join university_member um on gm.university_member_id=um.user_id join groups g on gm.group_id=g.id join usr1 m on um.user_id=m.id;*/
+select m.first_name, m.middle_name, m.last_name, m.e_mail, d.name from university_member um join usr1 m on um.user_id=m.id join department d on um.department_id=d.id;
+
